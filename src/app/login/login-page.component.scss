@@ -1,0 +1,42 @@
+$padding: 10px 20px;
+
+.login-container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card{
+  padding: 0;
+
+  mat-card-title{
+    background-color: #e91e63;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: $padding;
+  }
+
+  mat-card-content{
+    padding: $padding;
+  }
+  
+  mat-card-footer{
+    margin: 0;
+    padding: $padding;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
