@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "generate": "swagger-angular-generator -s src/api/swagger-spec.json -d src/api/generated"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@angular/router": "~9.1.3",
     "jwt-decode": "^2.2.0",
     "rxjs": "~6.5.4",
+    "swagger-angular-generator": "^4.2.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
