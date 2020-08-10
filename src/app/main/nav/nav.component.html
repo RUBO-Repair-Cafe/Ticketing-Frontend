@@ -1,0 +1,50 @@
+<mat-toolbar color="primary" class="app-toolbar">
+  <div>
+    <button mat-icon-button (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="app-name">Ticketing-System</h1>
+  </div>
+
+  <div>
+    <mat-chip-list>
+
+      <mat-chip>
+        <mat-chip-avatar>
+          <mat-icon>
+            account_circle
+          </mat-icon>
+        </mat-chip-avatar>
+
+        Max Mustermann
+      </mat-chip>
+
+    </mat-chip-list>
+  </div>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #sidenav mode="side" class="app-sidenav">
+    
+    <mat-nav-list class="sidenav-list">
+
+      <div>
+        <h2 matSubheader class="list-header">Tickets</h2>
+        <a mat-list-item class="list-item" [routerLink]="['ticket', 'new']">Neues Ticket</a>
+        <a mat-list-item class="list-item">Offene Tickets</a>
+        <a mat-list-item class="list-item">Ticket Archiv</a>
+      </div>
+        
+      <div>
+        <h2 matSubheader class="list-header">Inventar</h2>
+        <a mat-list-item class="list-item" disabled>Inventar-Liste</a>
+      </div>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenav-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

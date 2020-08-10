@@ -5,10 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { LoadingService } from './loading.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth.interceptor';
-import { AuthService } from './auth.service';
+import { AuthInterceptor } from './providers/auth.interceptor';
+import { MainModule } from './main/main.module';
+import { LoadingService } from './providers/loading.service';
+import { AuthService } from './providers/auth.service';
+import { LoginFormModule } from './login-form/login-form.module';
+import { HttpUnauthorizedInterceptor } from './providers/401.interceptor';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,17 @@ import { AuthService } from './auth.service';
   ],
   imports: [
     BrowserModule,
+    MainModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    LoginFormModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     LoadingService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpUnauthorizedInterceptor, multi: true },
     AuthService,
   ],
   bootstrap: [AppComponent],

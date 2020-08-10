@@ -1,0 +1,36 @@
+.app-container {
+  height: calc(100% - 64px);
+  width: 100%;
+}
+
+.sidenav-content {
+  padding: 16px;
+}
+
+:host ::ng-deep .mat-list-item-content {
+  padding-left: 26px !important;
+}
+
+.app-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    button {
+      margin-right: 20px;
+    }
+  }
+}
+
+:host ::ng-deep .mat-chip.mat-standard-chip{
+  background: none !important;
+}
+
+:host ::ng-deep .mat-chip.mat-standard-chip:hover{
+  background: none !important;
+}

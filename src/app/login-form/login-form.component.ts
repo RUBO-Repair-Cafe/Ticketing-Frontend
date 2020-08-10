@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from './login.service';
-import { LoadingService } from '../loading.service';
+import { LoadingService } from '../providers/loading.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpStatusCode } from '../statuscode.enum';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginFormComponent implements OnInit {
+
   loginForm: FormGroup;
+  @Output() loginEvent = new EventEmitter<boolean>();
 
   constructor(
     private readonly _fb: FormBuilder,
@@ -43,8 +45,10 @@ export class LoginPageComponent implements OnInit {
           this._snackBarService.open('Falsche Benutzerdaten', 'Schließen', { duration: 5000 });
         }
       }
+    } finally {
+      this._loadingService.loading = false;
+      this.loginEvent.emit(true);
     }
-    this._loadingService.loading = false;
   }
 }
 

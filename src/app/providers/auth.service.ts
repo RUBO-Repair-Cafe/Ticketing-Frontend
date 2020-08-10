@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: UserData;
+  needsLogin = new BehaviorSubject(false);
 
   constructor() {}
 
@@ -14,6 +16,14 @@ export class AuthService {
   logOut() {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('exp');
+  }
+
+  openLoginForm(): void{
+    this.needsLogin.next(true);
+  }
+
+  closeLoginForm(): void{
+    this.needsLogin.next(false);
   }
 }
 

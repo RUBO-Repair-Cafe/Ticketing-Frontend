@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { JwtResponseDto } from './dto/jwtReponse.dto';
+import { JwtResponseDto } from '../login-page/dto/jwtReponse.dto';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../providers/auth.service';
 
 @Injectable({
   providedIn: 'root'

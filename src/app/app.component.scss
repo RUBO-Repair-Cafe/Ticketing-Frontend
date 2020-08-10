@@ -1,4 +1,4 @@
-div.loading-container{
+div.main-modal{
   position: absolute;
   top: 0px;
   left: 0px;
@@ -6,7 +6,7 @@ div.loading-container{
   height: 100%;
   display: flex;
   background: rgba($color: #000, $alpha: 0.8);
-  z-index: 1;
+  z-index: 2;
   justify-content: center;
   align-items: center;
 }

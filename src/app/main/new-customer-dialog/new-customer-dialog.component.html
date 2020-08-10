@@ -1,0 +1,106 @@
+<h1 mat-dialog-title>Neuen Kunden anlegen</h1>
+<div mat-dialog-content>
+  <form [formGroup]="customerForm" class="vertical-form">
+    <div formGroupName="personalData" class="form-group">
+      <div class="row">
+        <mat-icon>perm_identity</mat-icon>
+        <h3>Name</h3>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Vorname</mat-label>
+        <input
+          matInput
+          placeholder="Vorname"
+          type="text"
+          name="firstName"
+          required
+          formControlName="firstName"
+        />
+        <mat-error *ngIf="customerForm.get('personalData').get('firstName').invalid">Pflichtfeld</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nachname</mat-label>
+        <input
+          matInput
+          placeholder="Nachname"
+          type="text"
+          name="lastName"
+          formControlName="lastName"
+          required
+        />
+        <mat-error *ngIf="customerForm.get('personalData').get('lastName').invalid">Pflichtfeld</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="address" class="form-group">
+      <div class="row">
+        <mat-icon>home</mat-icon>
+        <h3>Anschrift</h3>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Straße / Hausnummer</mat-label>
+        <input
+          matInput
+          placeholder="Straße / Hausnummer"
+          name="street"
+          type="text"
+          formControlName="address"
+          required
+        />
+        <mat-error *ngIf="customerForm.get('address').get('address').invalid">Pflichtfeld</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>PLZ</mat-label>
+        <input
+          matInput
+          type="text"
+          pattern="[0-9]*"
+          name="zip"
+          placeholder="PLZ"
+          formControlName="zip"
+          required
+        />
+        <mat-error *ngIf="customerForm.get('address').get('zip').getError('required')">Pflichtfeld</mat-error>
+        <mat-error *ngIf="customerForm.get('address').get('zip').getError('length')">Genau 5 Zeichen</mat-error>
+        <mat-error *ngIf="customerForm.get('address').get('zip').getError('pattern')">Nur Ziffern erlaubt</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Stadt</mat-label>
+        <input matInput placeholder="Stadt" type="text" name="city" required formControlName="city"/>
+        <mat-error>Pflichtfeld</mat-error>
+        <mat-error *ngIf="customerForm.get('address').get('city').invalid">Pflichtfeld</mat-error>
+      </mat-form-field>
+    </div>
+    <div formGroupName="contactData" class="form-group">
+      <div class="row">
+        <mat-icon>contact_mail</mat-icon>
+        <h3>Kontakt</h3>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Telefon</mat-label>
+        <input matInput placeholder="Telefon" type="tel" name="tel" required formControlName="phone"/>
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error *ngIf="customerForm.get('contactData').get('phone').invalid">Pflichtfeld</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+        <input matInput placeholder="E-Mail" type="email" name="email" formControlName="email"/>
+        <mat-icon matSuffix>mail</mat-icon>
+        <mat-error *ngIf="customerForm.get('contactData').get('email').getError('email')">Keine gültige E-Mail</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="buttons">
+  <button mat-button mat-dialog-close>Schließen</button>
+  <button mat-button (click)="onClose()" [disabled]="!customerForm.valid">
+    Anlegen
+  </button>
+</div>

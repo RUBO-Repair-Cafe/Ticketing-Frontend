@@ -1,0 +1,64 @@
+<div>
+  <form [formGroup]="newTicketForm" class="verticalForm">
+    <div class="customer-select-container w-40">
+      <mat-form-field>
+        <mat-label>Kunde</mat-label>
+        <mat-select formControlName="customer" required>
+          <mat-option
+            *ngFor="let customer of customerService.customers | async"
+            [value]="customer"
+            >{{ customer.firstName }} {{ customer.lastName }} |
+            {{ customer.zip }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="newTicketForm.get('customer').getError('required')"
+          >Pflichtfeld</mat-error
+        >
+      </mat-form-field>
+
+      <button mat-icon-button (click)="openNewCustomerDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <mat-form-field class="w-40">
+      <mat-label>Titel</mat-label>
+      <input
+        matInput
+        placeholder="Titel"
+        type="text"
+        formControlName="title"
+        required
+        autocomplete="off"
+      />
+      <mat-error *ngIf="newTicketForm.get('title').getError('required')"
+        >Pflichtfeld</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Beschreibung</mat-label>
+      <textarea
+        formControlName="body"
+        matInput
+        placeholder="Body"
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="5"
+        required
+        autocomplete="off"
+      ></textarea>
+      <mat-error *ngIf="newTicketForm.get('body').getError('required')"
+        >Pflichtfeld</mat-error
+      >
+    </mat-form-field>
+
+    <button
+      mat-stroked-button
+      color="primary"
+      [disabled]="!newTicketForm.valid"
+      (click)="onFormSubmit()"
+    >
+      Erstellen
+    </button>
+  </form>
+</div>

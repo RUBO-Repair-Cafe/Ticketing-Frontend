@@ -1,0 +1,29 @@
+
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 0px;
+  h3{
+    margin-left: 16px;
+    margin-bottom: 0px;
+  }
+}
+
+.form-group{
+  padding-top: 20px;
+  mat-form-field{
+    margin-right: 20px;
+  }
+  mat-form-field:last-child{
+    margin-right: 0;
+  }
+}
+
+.form-group:first-child{
+  padding-top: 0px;
+}
+
+.buttons{
+  justify-content: space-between;
+}
