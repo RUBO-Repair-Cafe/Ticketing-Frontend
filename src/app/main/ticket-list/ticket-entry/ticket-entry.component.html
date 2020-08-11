@@ -1,0 +1,23 @@
+<div class="wrapper" *ngIf="ticket" (click)="openTicket(ticket.ticketId)">
+
+  <div class="row">
+
+    <div class="icon">
+      <mat-icon *ngIf="ticket.ticketStatus === 0 || ticket.ticketStatus === 1" [ngClass]="{created: (ticket.ticketStatus === 0), triage: (ticket.ticketStatus === 1)}">error_outline</mat-icon>
+      <mat-icon *ngIf="ticket.ticketStatus === 2 || ticket.ticketStatus === 3" [ngClass]="{assigned: (ticket.ticketStatus === 2), doing: (ticket.ticketStatus === 3)}">account_circle</mat-icon>
+      <mat-icon *ngIf="ticket.ticketStatus === 4" class="done">check</mat-icon>
+      <mat-icon *ngIf="ticket.ticketStatus === 5" class="failed">close</mat-icon>
+    </div>
+
+    <div class="text">
+      <span class="titleText">{{ticket.ticketHeader}}</span>
+      <span class="authorText">Erstellt von: {{ticket.ticketAuthor.firstName}} {{ticket.ticketAuthor.lastName}}</span>
+    </div>
+
+    <div class="comment-icon">
+      <mat-icon matBadge="4">comment</mat-icon>
+    </div>
+
+  </div>
+
+</div>

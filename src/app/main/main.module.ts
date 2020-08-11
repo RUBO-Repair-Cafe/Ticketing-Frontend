@@ -17,11 +17,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { CustomerService } from './providers/customer.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TicketListComponent } from './ticket-list/ticket-list.component';
+import { TicketListModule } from './ticket-list/ticket-list.module';
+import { TicketViewComponent } from './ticket-view/ticket-view.component';
+import { TicketViewModule } from './ticket-view/ticket-view.module';
 
 
 const routes: Routes = [
   { path: 'main', component: NavComponent, children: [
-    { path: 'ticket/new', component: NewTicketComponent}
+    { path: 'tickets/new', component: NewTicketComponent },
+    { path: 'tickets', component: TicketListComponent },
+    { path: 'tickets/:id', component: TicketViewComponent },
   ]},
 ];
 
@@ -42,6 +48,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatSelectModule,
     MatSnackBarModule,
+    TicketListModule,
+    TicketViewModule,
     RouterModule.forChild(routes),
   ],
   providers: [CustomerService]

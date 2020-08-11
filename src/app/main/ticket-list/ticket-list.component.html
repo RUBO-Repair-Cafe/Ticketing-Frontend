@@ -1,0 +1,16 @@
+<div class="search">
+  <mat-form-field>
+    <mat-label>Suche</mat-label>
+    <input matInput placeholder="Suche" type="text" (keydown)="onSearchDown($event)" [formControl]="searchFormControl"/>
+  </mat-form-field>
+</div>
+
+<ng-container *ngIf="filteredTickets">  
+  <div class="list-wrapper">
+    <app-ticket-entry *ngFor="let ticket of displayedTickets" [ticket]="ticket"></app-ticket-entry>
+  </div>
+  
+  <div class="paginator">
+    <mat-paginator [pageSize]="defaultPageSize" [pageSizeOptions]="[5, 10, 15, 20]" (page)="onPage($event)" [length]="filteredTickets.length"></mat-paginator>
+  </div>
+</ng-container>

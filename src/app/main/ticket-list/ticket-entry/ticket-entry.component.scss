@@ -1,0 +1,56 @@
+.wrapper{
+  padding: 16px;
+  background: #505050;
+  border-bottom: 1px solid #a19f9f;
+  transition: background 200ms ease-in-out;
+  user-select: none;
+}
+
+.wrapper:hover{
+  background: #5e5e5e;
+  cursor: pointer;
+}
+
+.icon{
+  display: flex;
+  margin-right: 10px;
+}
+
+div.text{
+  display: flex;
+  flex-direction: column;
+}
+
+.authorText{
+  color: #bbb;
+  font-size: 12px;
+}
+
+.titleText{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.comment-icon{
+  margin-left: auto;
+  display: flex;
+}
+
+div.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.failed {
+  color: #ff0000
+}
+
+.assigned, .triage {
+  color: #ffd000;
+}
+
+.done, .doing, .created {
+  color: #00ff00
+}
